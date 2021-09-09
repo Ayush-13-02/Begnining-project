@@ -1,0 +1,47 @@
+#include <iostream>
+#include <string.h>
+using namespace std;
+class student{
+	private:
+	int roll_no;
+	string name;
+	float marks[3];
+    float total_mark=0;
+	public:
+	void set_data(){
+		cout<<"Enter your roll no. : ";
+		cin>>roll_no;
+		cout<<"Enter your name : ";
+		cin>>name;
+		cout<<"Enter your marks of three subjects : ";
+		for(int i=0;i<3;i++)
+		cin>>marks[i];}
+	int total_marks(){
+		for(int i=0;i<3;i++)
+		total_mark+=marks[i];
+		return total_mark;}
+	void display(int n);
+	};
+void student::display(int n){
+	cout<<"-------------------------"<<endl;
+	cout<<"Name of student : "<<name<<endl;
+	cout<<"Roll no. of "<<name<<" : "<<roll_no<<endl;
+	for(int i=0,j=0;i<n,j<3;i++,j++)
+	cout<<"Marks of "<<name<<" in Subject["<<i+1<<"] : "<<marks[j]<<endl;
+	cout<<"Total marks of the "<<name<<" is : "<<total_marks()<<endl;
+	}
+int main(){
+	int n;
+	cout<<"Enter the no. of student : ";
+	cin>>n;
+	student s[n];
+	cout<<"Enter detail of first student : \n";
+	s[0].set_data();
+	for(int i=1;i<n;i++){
+	cout<<"Enter detail of next student : \n";
+	s[i].set_data();}
+	cout<<"********Details of students************\n";
+	for(int i=0;i<n;i++)
+	s[i].display(n);
+	return 0;
+	}
