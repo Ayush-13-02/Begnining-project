@@ -1,0 +1,139 @@
+#include <iostream>
+#include <cstring>
+using namespace std;
+class market{
+  public:
+  float ptr[6],cost[6];
+  char ptr1[6][20],unit[6][20];	
+  static float bill;
+  int count;
+  float billfun(int n){
+	if(n==1)
+	bill+=10*count;	
+	else if(n==2)
+	bill+=15*count;
+	else if(n==3)
+	bill+=10*count;
+	else if(n==4)
+	bill+=200*count;
+	else if(n==5)
+	bill+=10*count;
+	else if(n==6)
+	bill+=80*count;
+	else if(n==0)
+	return bill;
+	return 0;}
+	void set_data(int n){
+		switch(n){
+		case 0:
+		    show_data(n);
+		    break;
+		case 1:
+		    cout<<"Enter the quantity of item : ";
+		    cin>>count;
+		    billfun(n);
+			show_data(n);
+		    break;
+		case 2:
+		    cout<<"Enter the quantity of item : ";
+		    cin>>count;
+		    billfun(n);
+			show_data(n);
+		    break;
+		case 3:
+		    cout<<"Enter the quantity of item : ";
+		    cin>>count;
+		    billfun(n);
+			show_data(n);
+		    break;
+		case 4:
+		    cout<<"Enter the quantity of item : ";
+		    cin>>count;
+		    billfun(n);
+			show_data(n);
+		    break;
+		case 5:
+		    cout<<"Enter the quantity of item : ";
+		    cin>>count;
+		    billfun(n);
+			show_data(n);
+		    break;
+		case 6:
+		    cout<<"Enter the quantity of item : ";
+		    cin>>count;
+		    billfun(n);
+			show_data(n);
+		    break;}
+	}
+	void show_data(int n);
+};
+float market::bill=0;
+void market::show_data(int n){
+	static int i;
+	switch(n){
+		case 0:
+		    cout<<"**********Bill**************"<<endl;
+		    for(int j=0;j<i;j++)
+		    cout<<ptr[j]<<unit[j]<<" "<<ptr1[j]<<" = Rs."<<cost[j]<<endl;
+		    cout<<"Your total bill is : Rs."<<billfun(n)<<endl;
+		    cout<<"Thank you"<<endl;
+		case 1:
+		    ptr[i]=count;
+		    strcpy(ptr1[i],"Foodgrain");
+		    strcpy(unit[i], "Kg");
+		    cost[i]=10*count;
+		    i++;
+		    break;
+		case 2:
+		    ptr[i]=count;
+		    strcpy(ptr1[i],"Oil");
+		    strcpy(unit[i], "L");
+		    cost[i]=15*count;
+		    i++;
+		    break;
+		case 3:
+		    ptr[i]=count;
+		    strcpy(ptr1[i],"Egg");
+		    cost[i]=10*count;
+		    i++;
+		    break;
+		case 4:
+		    ptr[i]=count;
+		    strcpy(ptr1[i],"Cakes");
+		    strcpy(unit[i], "Kg");
+		    cost[i]=200*count;
+		    i++;
+		    break;
+		case 5:
+		    ptr[i]=count;
+		    strcpy(ptr1[i],"Snacks");
+		    strcpy(unit[i], "Packet");
+		    cost[i]=10*count;
+		    i++;
+		    break;
+		case 6:
+		    ptr[i]=count;
+		    strcpy(ptr1[i],"Pepsi");
+		    strcpy(unit[i], "Bottle(1L)");
+		    cost[i]=80*count;
+		    i++;
+		    break;}
+}	
+int main(){
+	cout<<"Code = 1:For Foodgrains,and Cost = Rs.10/kg"<<endl;
+	cout<<"Code = 2:For Oil,and Cost = Rs.15/L"<<endl;
+	cout<<"Code = 3:For Egg,and Cost = Rs.10/Egg"<<endl;
+	cout<<"Code = 4:For Cakes,and Cost = Rs.200/kg*cake"<<endl;
+	cout<<"Code = 5:For Snacks,and Cost = Rs.10/packet"<<endl;
+	cout<<"Code = 6:For Pepsi,and Cost = Rs.80/bottle(1L)"<<endl;
+	cout<<"Code = 0:For take bill"<<endl<<"********************************"<<endl;
+	int n;
+	come:
+	cout<<"Enter choice for buy more items : ";
+	market m;
+	cin>>n;
+	m.set_data(n);
+	if(n!=0)
+	goto come;
+	return 0;
+}
